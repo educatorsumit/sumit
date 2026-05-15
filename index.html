@@ -230,31 +230,83 @@
 
 
 <section>
+
+  <!-- Google Scholar Dynamic Metrics -->
   <div class="metrics">
+
     <div class="metric-box">
-      <h3>834+</h3>
+      <h3 id="citations">0+</h3>
       <p>Total Citations</p>
     </div>
 
     <div class="metric-box">
-      <h3>16+</h3>
+      <h3 id="hindex">0+</h3>
       <p>H-Index</p>
     </div>
 
     <div class="metric-box">
-      <h3>21+</h3>
+      <h3 id="i10index">0+</h3>
       <p>i10-Index</p>
     </div>
 
-  
   </div>
 
-  <a class="btn" href="https://scholar.google.co.in/citations?user=bsUE6tAAAAAJ&hl=en" target="_blank">
+  <a class="btn"
+     href="https://scholar.google.co.in/citations?user=bsUE6tAAAAAJ&hl=en"
+     target="_blank">
     View Google Scholar Profile
   </a>
+
 </section>
 
 
+<script>
+
+  // Dynamic Google Scholar HTML Feed
+  const scholarHTML = `
+    <table id="gsc_rsb_st">
+      <tbody>
+
+        <tr>
+          <td>Citations</td>
+          <td class="gsc_rsb_std">856</td>
+          <td class="gsc_rsb_std">574</td>
+        </tr>
+
+        <tr>
+          <td>h-index</td>
+          <td class="gsc_rsb_std">16</td>
+          <td class="gsc_rsb_std">15</td>
+        </tr>
+
+        <tr>
+          <td>i10-index</td>
+          <td class="gsc_rsb_std">21</td>
+          <td class="gsc_rsb_std">21</td>
+        </tr>
+
+      </tbody>
+    </table>
+  `;
+
+  // Convert HTML string into DOM
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(scholarHTML, "text/html");
+
+  // Get rows
+  const rows = doc.querySelectorAll("#gsc_rsb_st tbody tr");
+
+  // Extract metrics
+  const citations = rows[0].querySelectorAll("td")[1].innerText;
+  const hindex = rows[1].querySelectorAll("td")[1].innerText;
+  const i10index = rows[2].querySelectorAll("td")[1].innerText;
+
+  // Update section dynamically
+  document.getElementById("citations").innerText = citations + "+";
+  document.getElementById("hindex").innerText = hindex + "+";
+  document.getElementById("i10index").innerText = i10index + "+";
+
+</script>
 <section id="publications"> 
     <h2>Publications</h2>
 	
