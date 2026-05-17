@@ -352,7 +352,6 @@ body{
     </div>
 
 </section>
-
 <!-- ADD THIS SECTION JUST ABOVE </body> -->
 
 <!-- CHAPTER PROPOSAL FORM -->
@@ -365,8 +364,10 @@ body{
         Authors are requested to submit their tentative chapter details below.
     </p>
 
-    <form id="submissionForm" 
-          style="max-width:600px; margin:auto; text-align:left;">
+    <form id="submissionForm"
+          style="max-width:700px; margin:auto; text-align:left;">
+
+        <!-- FULL NAME -->
 
         <input
             type="text"
@@ -376,6 +377,8 @@ body{
             style="width:100%; padding:12px; margin-top:10px; border-radius:8px; border:1px solid #ccc;"
         >
 
+        <!-- AFFILIATION -->
+
         <input
             type="text"
             id="affiliation"
@@ -383,6 +386,8 @@ body{
             required
             style="width:100%; padding:12px; margin-top:10px; border-radius:8px; border:1px solid #ccc;"
         >
+
+        <!-- EMAIL -->
 
         <input
             type="email"
@@ -392,6 +397,8 @@ body{
             style="width:100%; padding:12px; margin-top:10px; border-radius:8px; border:1px solid #ccc;"
         >
 
+        <!-- MOBILE -->
+
         <input
             type="tel"
             id="mobile"
@@ -400,12 +407,75 @@ body{
             style="width:100%; padding:12px; margin-top:10px; border-radius:8px; border:1px solid #ccc;"
         >
 
-        <textarea
-            id="chapter"
-            placeholder="Tentative Chapter Title"
+        <!-- CHAPTER SUGGESTION DROPDOWN -->
+
+        <label style="display:block; margin-top:15px; font-weight:bold;">
+            Select Tentative Chapter Title
+        </label>
+
+        <select
+            id="chapterSelect"
             required
-            style="width:100%; height:120px; padding:12px; margin-top:10px; border-radius:8px; border:1px solid #ccc; resize:none;"
+            style="
+                width:100%;
+                padding:12px;
+                margin-top:10px;
+                border-radius:8px;
+                border:1px solid #ccc;
+            "
+        >
+            <option value="">-- Select Chapter Topic --</option>
+
+            <optgroup label="Section I: Fundamentals">
+                <option>Introduction to Sustainable Chemistry and Advanced Materials</option>
+                <option>Principles of Green Chemistry in Materials Design</option>
+                <option>Environmental and Economic Aspects of Sustainable Materials</option>
+            </optgroup>
+
+            <optgroup label="Section II: Classes of Advanced Sustainable Materials">
+                <option>Nanomaterials and Nanocomposites for Sustainability</option>
+                <option>Polymer-based Sustainable Materials and Biopolymers</option>
+                <option>2D Materials (Graphene, MXenes) and Their Applications</option>
+                <option>Metal Oxide and Magnetic Nanomaterials</option>
+            </optgroup>
+
+            <optgroup label="Section III: Applications in Sustainable Chemistry">
+                <option>Advanced Materials for Environmental Remediation (Water, Air, Soil)</option>
+                <option>Photocatalysis and Catalysis for Green Chemical Processes</option>
+                <option>Energy Storage Materials (Batteries, Supercapacitors)</option>
+                <option>Materials for Renewable Energy (Solar Cells, Fuel Cells)</option>
+                <option>Sustainable Materials in Drug Delivery and Biomedical Applications</option>
+            </optgroup>
+
+            <optgroup label="Section IV: Emerging Trends and Future Directions">
+                <option>Artificial Intelligence and Machine Learning in Materials Design</option>
+                <option>Advanced Characterization Techniques for Sustainable Materials</option>
+                <option>Challenges in Commercialization and Scalability</option>
+                <option>Future Perspectives in Sustainable Chemistry and Materials Science</option>
+            </optgroup>
+
+            <option value="Others">Others (Write Your Own Chapter Title)</option>
+
+        </select>
+
+        <!-- CUSTOM CHAPTER TITLE -->
+
+        <textarea
+            id="customChapter"
+            placeholder="Enter Your Own Tentative Chapter Title"
+            style="
+                width:100%;
+                height:120px;
+                padding:12px;
+                margin-top:10px;
+                border-radius:8px;
+                border:1px solid #ccc;
+                resize:none;
+                display:none;
+            "
         ></textarea>
+
+        <!-- SUBMIT BUTTON -->
 
         <button
             type="submit"
@@ -427,6 +497,8 @@ body{
 
     </form>
 
+    <!-- MESSAGE AREA -->
+
     <div id="message"
          style="margin-top:15px; font-weight:bold; text-align:center;">
     </div>
@@ -437,6 +509,35 @@ body{
 
 const API_URL =
 "https://sheetdb.io/api/v1/z3r0smavllb3z";
+
+const chapterSelect =
+document.getElementById("chapterSelect");
+
+const customChapter =
+document.getElementById("customChapter");
+
+
+// SHOW/HIDE CUSTOM CHAPTER FIELD
+
+chapterSelect.addEventListener("change", function(){
+
+    if(this.value === "Others"){
+
+        customChapter.style.display = "block";
+        customChapter.required = true;
+
+    }else{
+
+        customChapter.style.display = "none";
+        customChapter.required = false;
+        customChapter.value = "";
+
+    }
+
+});
+
+
+// FORM SUBMISSION
 
 document
 .getElementById("submissionForm")
@@ -456,8 +557,17 @@ document
     const mobile =
         document.getElementById("mobile").value.trim();
 
-    const chapter =
-        document.getElementById("chapter").value.trim();
+    let chapter =
+        chapterSelect.value;
+
+    // IF USER SELECTS OTHERS
+
+    if(chapter === "Others"){
+
+        chapter =
+        customChapter.value.trim();
+
+    }
 
     // VALIDATION
 
@@ -502,7 +612,7 @@ document
                         Affiliation: affiliation,
                         Email: email,
                         Mobile: mobile,
-                        "tentative-chapter-title": chapter
+                        "Tentative Chapter Title": chapter
                     }
                 ]
 
@@ -519,6 +629,8 @@ document
             "Proposal Submitted Successfully.";
 
         document.getElementById("submissionForm").reset();
+
+        customChapter.style.display = "none";
 
         console.log(result);
 
