@@ -228,10 +228,8 @@
 </section>
 
 
-
 <section>
 
-  <!-- Google Scholar Dynamic Metrics -->
   <div class="metrics">
 
     <div class="metric-box">
@@ -259,8 +257,8 @@
 
 </section>
 
-
 <script>
+document.addEventListener("DOMContentLoaded", function () {
 
   // Dynamic Google Scholar HTML Feed
   const scholarHTML = `
@@ -297,15 +295,16 @@
   const rows = doc.querySelectorAll("#gsc_rsb_st tbody tr");
 
   // Extract metrics
-  const citations = rows[0].querySelectorAll("td")[1].innerText;
-  const hindex = rows[1].querySelectorAll("td")[1].innerText;
-  const i10index = rows[2].querySelectorAll("td")[1].innerText;
+  const citations = rows[0].querySelectorAll("td")[1].textContent;
+  const hindex = rows[1].querySelectorAll("td")[1].textContent;
+  const i10index = rows[2].querySelectorAll("td")[1].textContent;
 
   // Update section dynamically
-  document.getElementById("citations").innerText = citations + "+";
-  document.getElementById("hindex").innerText = hindex + "+";
-  document.getElementById("i10index").innerText = i10index + "+";
+  document.getElementById("citations").textContent = citations + "+";
+  document.getElementById("hindex").textContent = hindex + "+";
+  document.getElementById("i10index").textContent = i10index + "+";
 
+});
 </script>
 <section id="publications"> 
     <h2>Publications</h2>
@@ -1150,37 +1149,86 @@
     </li>
   </ul>
 </section>
-<section id="whatsnew">
-  <h2>📘 Book Call Details</h2>
+<section id="whatsnew" style="background:#fff; padding:18px; border-radius:12px; line-height:1.5; font-size:14px; box-shadow:0 3px 10px rgba(0,0,0,0.08);">
 
-  <p>
-    <strong>Advanced Materials in Sustainable Chemistry: Applications, Processes, and Future Directions</strong><br>
-    
+  <h2 style="margin-bottom:10px; color:#1565c0; font-size:22px;">
+    📘 Book Call Details
+  </h2>
+
+  <p style="
+      font-size:22px;
+      font-weight:800;
+      line-height:1.4;
+      background:linear-gradient(90deg,#1565c0,#8e24aa,#d81b60);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:10px;
+  ">
+    Advanced Materials in Sustainable Chemistry:
+    Applications, Processes, and Future Directions
   </p>
 
   <p>
-    Call for Book Chapters & Research Papers<br>
-    Published with ISBN under IIP (Iterative International Publishers)
+    🌍 <strong>Call for Book Chapters & Research Papers</strong><br>
+    Published with ISBN under <strong>IIP (Iterative International Publishers)</strong><br>
+    <strong>Book Series ID:</strong> IIPER1778138153
   </p>
 
-  <p>
-    <strong>Important Dates</strong><br>
-    Submission Deadline: 30 June 2026<br>
-    Registration Deadline: 05 July 2026
-  </p>
+  <div style="
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:10px;
+      margin-top:12px;
+  ">
 
-  <p>
+    <div style="background:#f7f9ff; padding:10px; border-radius:8px;">
+      <strong>📅 Important Dates</strong><br>
+      Start: 08 May 2026<br>
+      Submission: 30 June 2026<br>
+      Acceptance: Within 1 day<br>
+      Registration: 05 July 2026
+    </div>
+
+    <div style="background:#f7f9ff; padding:10px; border-radius:8px;">
+      <strong>🔬 Major Topics</strong><br>
+      Green synthesis routes, renewable energy materials,
+      bio-based polymers, recycling & circular economy,
+      environmental remediation, sustainable manufacturing.
+    </div>
+
+    <div style="background:#f7f9ff; padding:10px; border-radius:8px;">
+      <strong>🎓 Author Benefits</strong><br>
+      ISBN/ISSN publication, DOI assignment,
+      peer review, open access publication,
+      certificates & complimentary copy.
+    </div>
+
+    <div style="background:#f7f9ff; padding:10px; border-radius:8px;">
+      <strong>💰 Registration Fee</strong><br>
+      USD 18 / INR 1500<br>
+      Includes certificate, processing support,
+      and complimentary book copy.
+    </div>
+
+  </div>
+
+  <p style="margin-top:12px;">
     <strong>Editors:</strong><br>
-    Dr. Sumit Kumar<br>
-    Dr. Atul Kumar Srivastava<br>
+    Dr. Sumit Kumar |
+    Dr. Atul Kumar Srivastava |
     Dr. Shipra Solanki
   </p>
 
-  <p>
+  <p style="margin-top:10px;">
     <a href="book.html" target="_blank" rel="noopener noreferrer">
-      📘 View Full Book Details
+      📘 View Full Details
+    </a>
+    |
+    <a href="iip-book.pdf" download>
+      📄 Download PDF
     </a>
   </p>
+
 </section>
 
 <section id="contact">
