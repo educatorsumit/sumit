@@ -352,6 +352,8 @@ body{
     </div>
 
 </section>
+
+
 <!-- ADD THIS SECTION JUST ABOVE </body> -->
 
 <!-- CHAPTER PROPOSAL FORM -->
@@ -407,7 +409,7 @@ body{
             style="width:100%; padding:12px; margin-top:10px; border-radius:8px; border:1px solid #ccc;"
         >
 
-        <!-- CHAPTER SUGGESTION DROPDOWN -->
+        <!-- CHAPTER DROPDOWN -->
 
         <label style="display:block; margin-top:15px; font-weight:bold;">
             Select Tentative Chapter Title
@@ -424,6 +426,7 @@ body{
                 border:1px solid #ccc;
             "
         >
+
             <option value="">-- Select Chapter Topic --</option>
 
             <optgroup label="Section I: Fundamentals">
@@ -454,7 +457,9 @@ body{
                 <option>Future Perspectives in Sustainable Chemistry and Materials Science</option>
             </optgroup>
 
-            <option value="Others">Others (Write Your Own Chapter Title)</option>
+            <option value="Others">
+                Others (Write Your Own Chapter Title)
+            </option>
 
         </select>
 
@@ -612,7 +617,7 @@ document
                         Affiliation: affiliation,
                         Email: email,
                         Mobile: mobile,
-                        "Tentative Chapter Title": chapter
+                        "tentative-chapter-title": chapter
                     }
                 ]
 
@@ -649,5 +654,7 @@ document
 });
 
 </script>
+
+
 </body>
 </html>
