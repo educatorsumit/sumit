@@ -209,6 +209,9 @@ button:hover{
     <div id="result">Your score will appear here.</div>
 </div>
 
+<div class="score-box" id="explanationBox" style="display:none;">
+    <h2>📖 Answer Explanations</h2>
+    <div id="explanations"></div>
 </div>
 
 <script>
@@ -225,6 +228,19 @@ q7:"B",
 q8:"B",
 q9:"C",
 q10:"C"
+};
+
+const explanations = {
+q1:"'but' shows contrast. You wanted to go outside, but it was raining.",
+q2:"'or' is used when offering a choice between tea and coffee.",
+q3:"'so' shows result. She studied hard, so she passed.",
+q4:"'because' introduces the reason for staying home.",
+q5:"'and' joins two qualities: poor and honest.",
+q6:"'when' indicates the time something happens.",
+q7:"'and' joins two positive qualities: smart and hardworking.",
+q8:"'Although' introduces a contrast. He was tired, yet finished the work.",
+q9:"'or' is used to show a consequence or warning.",
+q10:"'both ... and' is the correct conjunction pair."
 };
 
 let score = 0;
@@ -272,6 +288,41 @@ message = "📖 Keep Practicing! You scored " + score + "/10";
 }
 
 document.getElementById("result").innerHTML = message;
+
+let explanationHTML = "";
+
+for(let question in answers){
+
+let selected = document.querySelector(`input[name="${question}"]:checked`);
+
+const userAnswer = selected ? selected.value : "No Answer";
+
+explanationHTML += `
+<div style="
+margin:15px 0;
+padding:15px;
+border-radius:10px;
+background:#f8f9ff;
+border-left:5px solid #667eea;
+">
+<b>Question ${question.substring(1)}</b><br>
+
+${
+userAnswer === answers[question]
+? "<span style='color:green'>✅ Correct</span>"
+: "<span style='color:red'>❌ Incorrect</span>"
+}
+
+<br><br>
+
+<b>Explanation:</b> ${explanations[question]}
+</div>
+`;
+}
+
+document.getElementById("explanations").innerHTML = explanationHTML;
+document.getElementById("explanationBox").style.display = "block";
+
 }
 </script>
 
