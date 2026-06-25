@@ -1,318 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
-}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Sumit Kumar | Academic Profile</title>
 
-:root{
-  --primary:#0f172a;
-  --secondary:#1e3a8a;
-  --accent:#2563eb;
-  --light:#f8fafc;
-  --text:#334155;
-  --gold:#facc15;
-  --card:rgba(255,255,255,0.92);
-}
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-body{
-  font-family:'Poppins',sans-serif;
-  line-height:1.55;
-  font-size:15px;
-  background:linear-gradient(to bottom right,#eef4ff,#f8fbff);
-  color:var(--text);
-  overflow-x:hidden;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-/* Hero Section */
-header{
-  position:relative;
-  background:
-    linear-gradient(135deg,rgba(15,23,42,.95),rgba(37,99,235,.9)),
-    url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80')
-    center/cover;
-  color:#fff;
-  padding:60px 20px 45px;
-  text-align:center;
-  overflow:hidden;
-}
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e3a8a;
+      --accent: #2563eb;
+      --light: #f8fafc;
+      --text: #334155;
+      --gold: #facc15;
+      --card: rgba(255, 255, 255, 0.9);
+    }
 
-header::before{
-  content:"";
-  position:absolute;
-  width:250px;
-  height:250px;
-  background:rgba(255,255,255,.08);
-  border-radius:50%;
-  top:-100px;
-  left:-80px;
-  filter:blur(20px);
-}
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.8;
+      background: linear-gradient(to bottom right, #eef4ff, #f8fbff);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-header::after{
-  content:"";
-  position:absolute;
-  width:300px;
-  height:300px;
-  background:rgba(255,255,255,.05);
-  border-radius:50%;
-  bottom:-140px;
-  right:-100px;
-  filter:blur(20px);
-}
+    /* Hero Section */
+    header {
+      position: relative;
+      background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(37,99,235,0.9)),
+        url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: white;
+      padding: 100px 20px 80px;
+      text-align: center;
+      overflow: hidden;
+    }
 
-header h1{
-  font-size:46px;
-  font-weight:700;
-  margin-bottom:5px;
-  position:relative;
-  z-index:2;
-}
+    header::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      top: -100px;
+      left: -80px;
+      filter: blur(20px);
+    }
 
-header h2{
-  font-size:22px;
-  font-weight:400;
-  color:#dbeafe;
-  margin-bottom:6px;
-  position:relative;
-  z-index:2;
-}
+    header::after {
+      content: "";
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      bottom: -180px;
+      right: -120px;
+      filter: blur(20px);
+    }
 
-header p{
-  font-size:16px;
-  max-width:700px;
-  margin:auto;
-  color:#e2e8f0;
-  position:relative;
-  z-index:2;
-}
+    header h1 {
+      font-size: 54px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
+    }
 
-.hero-btn{
-  display:inline-block;
-  margin-top:15px;
-  padding:11px 24px;
-  background:var(--gold);
-  color:#111827;
-  font-weight:600;
-  border-radius:50px;
-  text-decoration:none;
-  transition:.3s;
-}
+    header h2 {
+      font-size: 24px;
+      font-weight: 400;
+      color: #dbeafe;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
+    }
 
-.hero-btn:hover{
-  transform:translateY(-2px);
-  background:#fff;
-}
+    header p {
+      font-size: 18px;
+      max-width: 750px;
+      margin: auto;
+      color: #e2e8f0;
+      position: relative;
+      z-index: 2;
+    }
 
-/* Navigation */
-nav{
-  background:rgba(15,23,42,.95);
-  backdrop-filter:blur(10px);
-  padding:10px;
-  text-align:center;
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
+    .hero-btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 28px;
+      background: var(--gold);
+      color: #111827;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
 
-nav a{
-  color:white;
-  text-decoration:none;
-  margin:0 14px;
-  font-weight:500;
-  position:relative;
-  transition:.3s;
-}
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      background: white;
+    }
 
-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-4px;
-  width:0;
-  height:2px;
-  background:var(--gold);
-  transition:.3s;
-}
+    /* Navigation */
+    nav {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
 
-nav a:hover::after{
-  width:100%;
-}
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 16px;
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s;
+    }
 
-nav a:hover{
-  color:var(--gold);
-}
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
 
-/* Container */
-.container{
-  width:92%;
-  max-width:1200px;
-  margin:25px auto;
-}
+    nav a:hover::after {
+      width: 100%;
+    }
 
-/* Sections */
-section{
-  background:var(--card);
-  backdrop-filter:blur(8px);
-  margin-bottom:18px;
-  padding:22px 28px;
-  border-radius:14px;
-  box-shadow:0 6px 20px rgba(0,0,0,.07);
-  border:1px solid rgba(255,255,255,.5);
-  transition:.3s;
-}
+    nav a:hover {
+      color: var(--gold);
+    }
 
-section:hover{
-  transform:translateY(-2px);
-}
+    /* Main Container */
+    .container {
+      width: 92%;
+      max-width: 1200px;
+      margin: 50px auto;
+    }
 
-section h2{
-  color:var(--secondary);
-  margin-bottom:14px;
-  font-size:26px;
-  position:relative;
-  display:inline-block;
-}
+    /* Section Card */
+    section {
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      margin-bottom: 35px;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
 
-section h2::after{
-  content:"";
-  width:70%;
-  height:3px;
-  background:linear-gradient(to right,var(--accent),transparent);
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  border-radius:10px;
-}
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+    }
 
-section p{
-  text-align:justify;
-  margin-bottom:10px;
-}
+    section h2 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 30px;
+      position: relative;
+      display: inline-block;
+    }
 
-/* Lists */
-ul{
-  padding-left:18px;
-}
+    section h2::after {
+      content: "";
+      width: 70%;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent), transparent);
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      border-radius: 10px;
+    }
 
-li{
-  margin-bottom:6px;
-}
+    ul {
+      padding-left: 22px;
+    }
 
-/* Metrics */
-.metrics{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:15px;
-  margin-top:15px;
-}
+    li {
+      margin-bottom: 12px;
+    }
 
-.metric-box{
-  background:linear-gradient(135deg,#eff6ff,#dbeafe);
-  padding:18px 15px;
-  border-radius:14px;
-  text-align:center;
-  transition:.3s;
-}
+    /* Metrics */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
 
-.metric-box:hover{
-  transform:scale(1.03);
-}
+    .metric-box {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      padding: 30px 20px;
+      border-radius: 18px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(37,99,235,0.15);
+    }
 
-.metric-box h3{
-  color:var(--secondary);
-  font-size:30px;
-  margin-bottom:4px;
-}
+    .metric-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(37,99,235,0.2);
+    }
 
-.metric-box p{
-  margin:0;
-}
+    .metric-box h3 {
+      color: var(--secondary);
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
 
-/* Publications */
-.publication{
-  margin-bottom:10px;
-  padding:12px 16px;
-  border-radius:12px;
-  background:#f8fbff;
-  border-left:4px solid var(--accent);
-  transition:.3s;
-}
+    .metric-box p {
+      font-size: 16px;
+      color: #475569;
+    }
 
-.publication:hover{
-  background:#eff6ff;
-  transform:translateX(3px);
-}
+    /* Publications */
+    .publication {
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 15px;
+      background: #f8fbff;
+      border-left: 5px solid var(--accent);
+      transition: 0.3s ease;
+    }
 
-/* Buttons */
-.btn{
-  display:inline-block;
-  margin-top:10px;
-  padding:10px 20px;
-  background:linear-gradient(to right,var(--accent),var(--secondary));
-  color:white;
-  text-decoration:none;
-  border-radius:50px;
-  font-weight:500;
-}
+    .publication:hover {
+      background: #eff6ff;
+      transform: translateX(5px);
+    }
 
-.btn:hover{
-  transform:translateY(-2px);
-}
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 24px;
+      background: linear-gradient(to right, var(--accent), var(--secondary));
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+    }
 
-/* Footer */
-footer{
-  background:linear-gradient(to right,#0f172a,#1e3a8a);
-  color:white;
-  text-align:center;
-  padding:18px 20px;
-  margin-top:30px;
-  font-size:14px;
-}
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(37,99,235,0.35);
+    }
 
-/* Scrollbar */
-::-webkit-scrollbar{
-  width:8px;
-}
+    /* Footer */
+    footer {
+      background: linear-gradient(to right, #0f172a, #1e3a8a);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+      font-size: 15px;
+    }
 
-::-webkit-scrollbar-thumb{
-  background:linear-gradient(var(--accent),var(--secondary));
-  border-radius:20px;
-}
+    footer p {
+      opacity: 0.9;
+    }
 
-/* Mobile */
-@media(max-width:768px){
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
 
-  header{
-    padding:50px 15px 35px;
-  }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--accent), var(--secondary));
+      border-radius: 20px;
+    }
 
-  header h1{
-    font-size:34px;
-  }
+    /* Responsive */
+    @media(max-width: 768px) {
+      header {
+        padding: 80px 20px 60px;
+      }
 
-  header h2{
-    font-size:18px;
-  }
+      header h1 {
+        font-size: 36px;
+      }
 
-  nav a{
-    margin:6px;
-    font-size:13px;
-  }
+      header h2 {
+        font-size: 20px;
+      }
 
-  section{
-    padding:18px;
-  }
+      nav a {
+        display: inline-block;
+        margin: 10px;
+        font-size: 14px;
+      }
 
-  section h2{
-    font-size:22px;
-  }
-}
-</style>
+      section {
+        padding: 25px;
+      }
+
+      section h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
 
 
 <body>
@@ -346,25 +361,11 @@ footer{
 
 <section id="about">
   <h2>About</h2>
-
   <p>
-    <strong>Dr. Sumit Kumar</strong> is an <strong>Assistant Professor</strong> in the PG Department of Chemistry at <strong>Magadh University</strong>. He earned his <strong>Ph.D. in Chemistry</strong> from the <em>Indian Institute of Science Education and Research (IISER)</em> and completed his <strong>M.Sc. in Physical Chemistry</strong> from <em>Banaras Hindu University</em>. He further expanded his research expertise as a <strong>Postdoctoral Fellow</strong> at the <em>Max Planck Institute for Biophysical Chemistry, Germany</em>.
-  </p>
+Dr. Sumit Kumar is currently serving as Assistant Professor in the PG Department of Chemistry at Magadh University. He obtained his Ph.D. in Chemistry from Indian Institutes of Science Education and Research and completed his M.Sc. in Physical Chemistry from Banaras Hindu University. He also worked as a Postdoctoral Fellow at the Max Planck Institute for Biophysical Chemistry, Germany. His research interests include physical chemistry, molecular spectroscopy, quantum chemical calculations, molecular dynamics simulations, non-covalent interactions, and computational materials science. Dr. Kumar has published numerous research papers, book chapters, and review articles in reputed international journals and publishers including ACS, Elsevier, Springer, Wiley, CRC Press, and the Royal Society of Chemistry. He is the recipient of the SERB Start-up Research Grant (SRG) from the Department of Science and Technology (DST), Government of India, and has actively contributed to academic research, scientific conferences, and international collaborations.
 
-  <p>
-    His research interests span <strong>Physical Chemistry</strong>, <strong>Molecular Spectroscopy</strong>, <strong>Quantum Chemical Calculations</strong>, <strong>Molecular Dynamics Simulations</strong>, <strong>Non-Covalent Interactions</strong>, and <strong>Computational Materials Science</strong>. Through a multidisciplinary approach, he integrates theoretical and computational techniques to investigate complex molecular systems and advance the understanding of chemical and material properties.
   </p>
-
-  <p>
-    Dr. Kumar has established a strong international research profile, publishing <strong>more than 50 research papers and book chapters in the last three years</strong>. His scholarly contributions have appeared in leading journals and publications from renowned publishers, including <em>ACS</em>, <em>Elsevier</em>, <em>Springer</em>, <em>Wiley</em>, <em>CRC Press</em>, and the <em>Royal Society of Chemistry</em>.
-  </p>
-
-  <p>
-    He is the recipient of the <strong>SERB Start-up Research Grant (SRG)</strong> awarded by the <em>Department of Science and Technology (DST), Government of India</em>. In addition to his research accomplishments, he actively contributes to <strong>scientific conferences</strong>, <strong>academic collaborations</strong>, and <strong>international research initiatives</strong>, fostering innovation and excellence in chemical sciences.
-  </p>
-
 </section>
-
 
 <section id="research">
   <h2>Current Research Areas</h2>
@@ -443,7 +444,6 @@ footer{
   </a>
 
 </section>
-
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -531,7 +531,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <b>A Fluorescein Appended Probe for Specific Detection of Cu²⁺ and Hg²⁺ Ions: Latent Fingerprints, Cell Imaging, Logic Gate and Theoretical Investigation</b><br>
                 <i>Journal of Inclusion Phenomena and Macrocyclic Chemistry</i>,
                 Springer Nature (2026).
-				<a href="https://doi.org/10.1007/s10847-026-01357-w/" target="_blank" 
+				<a href="https://doi.org/10.1007/s10847-026-01357-w" target="_blank" 
 				style="text-decoration: none; color: #0a66c2; font-weight: bold;"> 📄 Read Full Research Paper
 				</a>	
             </li>
