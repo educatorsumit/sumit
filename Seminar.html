@@ -1,777 +1,945 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Molecular Recognition & Non-Covalent Interactions | Magadh University</title>
-
-    <style>
-        :root {
-            --navy: #102a43;
-            --blue: #1769aa;
-            --cyan: #00a6c7;
-            --teal: #008b8b;
-            --gold: #d6a84f;
-            --cream: #f7f5ef;
-            --light: #eef7fa;
-            --white: #ffffff;
-            --dark: #17202a;
-            --muted: #64748b;
-            --border: #dbe5ea;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            color: var(--dark);
-            background: #f7fafc;
-            line-height: 1.6;
-        }
-
-        /* ---------- NAVBAR ---------- */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(16, 42, 67, 0.97);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 3px 20px rgba(0,0,0,0.12);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 13px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-brand {
-            color: white;
-            font-weight: 700;
-            font-size: 17px;
-            letter-spacing: 0.3px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.25s;
-        }
-
-        .nav-links a:hover {
-            color: #7de4f2;
-        }
-
-        /* ---------- HERO ---------- */
-
-        .hero {
-            min-height: 700px;
-            position: relative;
-            overflow: hidden;
-            color: white;
-            background:
-                radial-gradient(circle at 15% 20%, rgba(0,166,199,.25), transparent 28%),
-                radial-gradient(circle at 85% 70%, rgba(214,168,79,.18), transparent 30%),
-                linear-gradient(135deg, #071d31, #103d5c 55%, #006f82);
-        }
-
-        .molecule {
-            position: absolute;
-            border: 1px solid rgba(255,255,255,.13);
-            border-radius: 50%;
-        }
-
-        .m1 {
-            width: 450px;
-            height: 450px;
-            right: -130px;
-            top: -100px;
-        }
-
-        .m2 {
-            width: 650px;
-            height: 650px;
-            left: -280px;
-            bottom: -350px;
-        }
-
-        .hero-inner {
-            max-width: 1150px;
-            margin: auto;
-            min-height: 700px;
-            padding: 80px 25px 65px;
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-content {
-            max-width: 900px;
-        }
-
-        .university {
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 15px;
-            color: #a8eaf2;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .department {
-            font-size: 20px;
-            margin-bottom: 28px;
-            color: #d8eef2;
-        }
-
-        .hero h1 {
-            font-family: Georgia, serif;
-            font-size: clamp(42px, 6vw, 76px);
-            line-height: 1.08;
-            margin-bottom: 25px;
-            max-width: 950px;
-        }
-
-        .hero h1 span {
-            color: #7de4f2;
-        }
-
-        .subtitle {
-            max-width: 750px;
-            font-size: 19px;
-            color: #d6e8ed;
-            margin-bottom: 35px;
-        }
-
-        .event-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 13px;
-            margin-bottom: 35px;
-        }
-
-        .meta-box {
-            background: rgba(255,255,255,.09);
-            border: 1px solid rgba(255,255,255,.18);
-            padding: 13px 20px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-        }
-
-        .meta-box strong {
-            display: block;
-            color: white;
-            font-size: 16px;
-        }
-
-        .meta-box small {
-            color: #a9d9e0;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-block;
-            transition: .25s;
-        }
-
-        .btn-primary {
-            background: var(--gold);
-            color: #17202a;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(214,168,79,.25);
-        }
-
-        .btn-outline {
-            border: 1px solid rgba(255,255,255,.45);
-            color: white;
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: var(--navy);
-        }
-
-        /* ---------- GENERAL ---------- */
-
-        section {
-            padding: 85px 20px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .section-label {
-            text-transform: uppercase;
-            color: var(--blue);
-            letter-spacing: 2px;
-            font-size: 13px;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .section-title {
-            font-family: Georgia, serif;
-            color: var(--navy);
-            font-size: clamp(30px, 4vw, 44px);
-            margin-bottom: 18px;
-        }
-
-        .section-intro {
-            color: var(--muted);
-            max-width: 750px;
-            font-size: 17px;
-            margin-bottom: 40px;
-        }
-
-        /* ---------- ABOUT ---------- */
-
-        .about {
-            background: white;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.15fr .85fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text p {
-            margin-bottom: 17px;
-            color: #475569;
-        }
-
-        .highlight-card {
-            background: linear-gradient(145deg, #eef9fb, #f7f5ef);
-            padding: 35px;
-            border-radius: 18px;
-            border: 1px solid var(--border);
-        }
-
-        .highlight-card h3 {
-            color: var(--navy);
-            margin-bottom: 18px;
-            font-family: Georgia, serif;
-            font-size: 25px;
-        }
-
-        .highlight-card ul {
-            list-style: none;
-        }
-
-        .highlight-card li {
-            padding: 9px 0;
-            border-bottom: 1px solid rgba(0,0,0,.07);
-        }
-
-        .highlight-card li:last-child {
-            border-bottom: none;
-        }
-
-        .highlight-card li::before {
-            content: "✦";
-            color: var(--gold);
-            margin-right: 10px;
-        }
-
-        /* ---------- SPEAKER ---------- */
-
-        .speaker-section {
-            background: var(--cream);
-        }
-
-        .speaker-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            display: grid;
-            grid-template-columns: 210px 1fr;
-            gap: 35px;
-            align-items: center;
-            border: 1px solid var(--border);
-            box-shadow: 0 15px 45px rgba(16,42,67,.07);
-        }
-
-        .speaker-photo {
-            width: 190px;
-            height: 190px;
-            border-radius: 50%;
-            background:
-                linear-gradient(145deg, #dceef2, #eef4f5);
-            border: 6px solid #f5fafb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6b8790;
-            text-align: center;
-            font-size: 13px;
-        }
-
-        .speaker-card h3 {
-            font-family: Georgia, serif;
-            font-size: 31px;
-            color: var(--navy);
-            margin-bottom: 5px;
-        }
-
-        .speaker-role {
-            color: var(--blue);
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .speaker-card p {
-            color: var(--muted);
-        }
-
-        /* ---------- SCHEDULE ---------- */
-
-        .schedule-section {
-            background: white;
-        }
-
-        .schedule {
-            border-left: 3px solid var(--cyan);
-            margin-top: 30px;
-        }
-
-        .schedule-item {
-            display: grid;
-            grid-template-columns: 150px 1fr;
-            gap: 25px;
-            padding: 22px 20px 22px 30px;
-            position: relative;
-        }
-
-        .schedule-item::before {
-            content: "";
-            position: absolute;
-            left: -9px;
-            top: 28px;
-            width: 13px;
-            height: 13px;
-            background: var(--cyan);
-            border-radius: 50%;
-            border: 3px solid white;
-        }
-
-        .time {
-            font-weight: 800;
-            color: var(--blue);
-        }
-
-        .schedule-item h3 {
-            color: var(--navy);
-            margin-bottom: 4px;
-        }
-
-        .schedule-item p {
-            color: var(--muted);
-        }
-
-        /* ---------- REGISTRATION ---------- */
-
-        .registration-section {
-            background:
-                linear-gradient(135deg, #0d3049, #006d7d);
-            color: white;
-        }
-
-        .registration-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 45px;
-            align-items: start;
-        }
-
-        .registration-section .section-label {
-            color: #8ee7f1;
-        }
-
-        .registration-section .section-title {
-            color: white;
-        }
-
-        .registration-section .section-intro {
-            color: #c8e3e7;
-        }
-
-        .registration-info {
-            padding-top: 15px;
-        }
-
-        .registration-info h3 {
-            font-family: Georgia, serif;
-            font-size: 27px;
-            margin-bottom: 18px;
-        }
-
-        .registration-info p {
-            color: #c7e0e4;
-            margin-bottom: 20px;
-        }
-
-        .registration-form {
-            background: white;
-            color: var(--dark);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,.18);
-        }
-
-        .registration-form h3 {
-            color: var(--navy);
-            margin-bottom: 20px;
-            font-family: Georgia, serif;
-            font-size: 25px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: #334155;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 12px 13px;
-            border: 1px solid #cbd5e1;
-            border-radius: 7px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: var(--cyan);
-            box-shadow: 0 0 0 3px rgba(0,166,199,.1);
-        }
-
-        .submit-btn {
-            width: 100%;
-            border: none;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        /* ---------- ORGANIZERS ---------- */
-
-        .team-section {
-            background: #f7fafc;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .team-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 25px 18px;
-            text-align: center;
-            transition: .25s;
-        }
-
-        .team-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(16,42,67,.08);
-        }
-
-        .avatar {
-            width: 70px;
-            height: 70px;
-            margin: auto auto 15px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #dff4f6, #edf0e8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--blue);
-            font-weight: 800;
-            font-size: 19px;
-        }
-
-        .team-card h3 {
-            font-size: 16px;
-            color: var(--navy);
-            margin-bottom: 5px;
-        }
-
-        .team-card p {
-            font-size: 13px;
-            color: var(--muted);
-        }
-
-        /* ---------- VENUE ---------- */
-
-        .venue-section {
-            background: white;
-        }
-
-        .venue-card {
-            background: linear-gradient(135deg, #f0f8fa, #fffdf7);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 40px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .venue-card h3 {
-            color: var(--navy);
-            font-family: Georgia, serif;
-            font-size: 27px;
-            margin-bottom: 10px;
-        }
-
-        .venue-card p {
-            color: var(--muted);
-        }
-
-        .venue-details {
-            display: grid;
-            gap: 12px;
-        }
-
-        .venue-detail {
-            background: white;
-            border: 1px solid var(--border);
-            padding: 14px 18px;
-            border-radius: 9px;
-        }
-
-        .venue-detail strong {
-            display: block;
-            color: var(--navy);
-        }
-
-        .venue-detail span {
-            font-size: 14px;
-            color: var(--muted);
-        }
-
-        /* ---------- FOOTER ---------- */
-
-        footer {
-            background: #071d31;
-            color: #b8ced4;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        footer h3 {
-            color: white;
-            font-family: Georgia, serif;
-            font-size: 22px;
-            margin-bottom: 8px;
-        }
-
-        footer p {
-            font-size: 14px;
-        }
-
-        .footer-title {
-            color: #7de4f2;
-            margin-top: 18px;
-            font-weight: 700;
-        }
-
-        /* ---------- RESPONSIVE ---------- */
-
-        @media (max-width: 850px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .about-grid,
-            .registration-grid,
-            .venue-card {
-                grid-template-columns: 1fr;
-            }
-
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .speaker-card {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .speaker-photo {
-                margin: auto;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .hero-inner {
-                padding-top: 55px;
-            }
-
-            .hero {
-                min-height: 650px;
-            }
-
-            .hero-inner {
-                min-height: 650px;
-            }
-
-            .hero h1 {
-                font-size: 39px;
-            }
-
-            section {
-                padding: 60px 17px;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .schedule-item {
-                grid-template-columns: 1fr;
-                gap: 5px;
-            }
-
-            .speaker-card,
-            .venue-card,
-            .registration-form {
-                padding: 25px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Molecular Recognition & Non-Covalent Interactions | Magadh University</title>
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #17202a;
+    background: #f5f8fa;
+    line-height: 1.6;
+}
+
+:root {
+    --navy: #08263d;
+    --blue: #087ea4;
+    --cyan: #13b7c9;
+    --gold: #d7ad58;
+    --light: #eef8fa;
+    --white: #ffffff;
+    --gray: #64748b;
+    --border: #dbe6ea;
+}
+
+.container {
+    max-width: 1120px;
+    margin: auto;
+    padding: 0 22px;
+}
+
+section {
+    padding: 75px 0;
+}
+
+.section-tag {
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    color: var(--navy);
+    font-family: Georgia, serif;
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.section-text {
+    color: var(--gray);
+    max-width: 760px;
+    margin-bottom: 35px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(8, 38, 61, 0.97);
+    box-shadow: 0 3px 18px rgba(0,0,0,.12);
+}
+
+.nav-inner {
+    max-width: 1120px;
+    margin: auto;
+    padding: 13px 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: white;
+    font-weight: 800;
+    letter-spacing: .5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: #79e6ef;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    color: white;
+
+    background:
+        radial-gradient(circle at 10% 20%, rgba(19,183,201,.25), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(215,173,88,.18), transparent 30%),
+        linear-gradient(135deg, #061b2d, #0a3d59 55%, #006f7e);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    right: -300px;
+    top: -280px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 50%;
+}
+
+.hero-inner {
+    max-width: 1120px;
+    margin: auto;
+    padding: 70px 22px 80px;
+    position: relative;
+    z-index: 2;
+}
+
+.university {
+    color: #8de9f1;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.department {
+    color: #d5e9ed;
+    font-size: 18px;
+    margin-top: 3px;
+}
+
+
+/* =========================================================
+   LEADERSHIP
+========================================================= */
+
+.leadership {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 14px;
+    margin: 30px 0 38px;
+}
+
+.leader {
+    padding: 18px;
+    border-radius: 13px;
+
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.18);
+
+    backdrop-filter: blur(8px);
+}
+
+.leader-label {
+    color: #7de4f2;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.leader h3 {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    margin: 5px 0 2px;
+}
+
+.leader p {
+    color: #d9edf0;
+    font-size: 13px;
+}
+
+.leader small {
+    color: #a9cbd0;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.05;
+    max-width: 900px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #7de4f2;
+}
+
+.subtitle {
+    max-width: 700px;
+    color: #d4e7eb;
+    font-size: 17px;
+    margin-bottom: 28px;
+}
+
+.subtitle strong {
+    color: white;
+    font-size: 21px;
+}
+
+
+/* =========================================================
+   EVENT INFO
+========================================================= */
+
+.event-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.info-box {
+    padding: 12px 18px;
+    border-radius: 9px;
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.18);
+}
+
+.info-box strong {
+    display: block;
+    font-size: 15px;
+}
+
+.info-box span {
+    color: #a9d9df;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 22px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    transition: .25s;
+}
+
+.btn-primary {
+    background: var(--gold);
+    color: #17202a;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    color: white;
+    border: 1px solid rgba(255,255,255,.4);
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--navy);
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about {
+    background: white;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr .7fr;
+    gap: 50px;
+}
+
+.about p {
+    color: var(--gray);
+    margin-bottom: 14px;
+}
+
+.theme-card {
+    background: var(--light);
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: 15px;
+}
+
+.theme-card h3 {
+    font-family: Georgia, serif;
+    color: var(--navy);
+    margin-bottom: 15px;
+}
+
+.theme-list {
+    list-style: none;
+}
+
+.theme-list li {
+    padding: 7px 0;
+    border-bottom: 1px solid #d8e8eb;
+    font-size: 14px;
+}
+
+.theme-list li:last-child {
+    border: none;
+}
+
+.theme-list li::before {
+    content: "✦";
+    color: var(--gold);
+    margin-right: 8px;
+}
+
+
+/* =========================================================
+   INVITED SPEAKER
+========================================================= */
+
+.speaker {
+    background: #f5f2ea;
+}
+
+.speaker-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 32px;
+
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 30px;
+
+    box-shadow: 0 10px 35px rgba(8,38,61,.06);
+}
+
+.speaker-photo {
+    width: 155px;
+    height: 155px;
+    border-radius: 50%;
+
+    background: linear-gradient(145deg,#dceff2,#f2f4ed);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #6c858d;
+    font-size: 12px;
+    text-align: center;
+
+    border: 6px solid #f7fafb;
+}
+
+.speaker-card h3 {
+    font-family: Georgia, serif;
+    color: var(--navy);
+    font-size: 28px;
+}
+
+.speaker-role {
+    color: var(--blue);
+    font-weight: 700;
+    margin: 3px 0 13px;
+}
+
+.speaker-card p {
+    color: var(--gray);
+}
+
+
+/* =========================================================
+   SCHEDULE
+========================================================= */
+
+.schedule {
+    background: white;
+}
+
+.timeline {
+    border-left: 3px solid var(--cyan);
+    margin-top: 30px;
+}
+
+.schedule-item {
+    display: grid;
+    grid-template-columns: 155px 1fr;
+    gap: 25px;
+
+    padding: 18px 20px 18px 28px;
+
+    position: relative;
+}
+
+.schedule-item::before {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: 25px;
+
+    width: 13px;
+    height: 13px;
+
+    border-radius: 50%;
+    background: var(--cyan);
+    border: 3px solid white;
+}
+
+.schedule-time {
+    color: var(--blue);
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.schedule-item h3 {
+    color: var(--navy);
+    font-size: 17px;
+}
+
+.schedule-item p {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   REGISTRATION
+========================================================= */
+
+.registration {
+    background: linear-gradient(135deg,#08263d,#006c7b);
+    color: white;
+}
+
+.registration-grid {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 50px;
+}
+
+.registration .section-title {
+    color: white;
+}
+
+.registration .section-text {
+    color: #c6e1e5;
+}
+
+.reg-box {
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    color: #17202a;
+}
+
+.reg-box h3 {
+    font-family: Georgia, serif;
+    color: var(--navy);
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+.form-group {
+    margin-bottom: 13px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccd9de;
+    border-radius: 6px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--cyan);
+}
+
+.submit {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   ORGANIZING TEAM
+========================================================= */
+
+.team {
+    background: #f5f8fa;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+
+.team-card {
+    background: white;
+    padding: 22px 15px;
+    border-radius: 13px;
+    text-align: center;
+    border: 1px solid var(--border);
+}
+
+.avatar {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+
+    margin: auto auto 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--light);
+    color: var(--blue);
+    font-weight: 800;
+}
+
+.team-card h3 {
+    color: var(--navy);
+    font-size: 15px;
+}
+
+.team-card p {
+    color: var(--gray);
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   VENUE
+========================================================= */
+
+.venue {
+    background: white;
+}
+
+.venue-card {
+    padding: 32px;
+    border-radius: 16px;
+
+    background: linear-gradient(135deg,#eff9fa,#fffaf0);
+
+    border: 1px solid var(--border);
+
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.venue-card h3 {
+    font-family: Georgia, serif;
+    color: var(--navy);
+    font-size: 26px;
+}
+
+.venue-card p {
+    color: var(--gray);
+}
+
+.venue-details {
+    display: grid;
+    gap: 10px;
+}
+
+.venue-detail {
+    background: white;
+    padding: 12px 16px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+}
+
+.venue-detail strong {
+    display: block;
+    color: var(--navy);
+    font-size: 13px;
+}
+
+.venue-detail span {
+    color: var(--gray);
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background: #061b2d;
+    color: #a9c5cb;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+footer h3 {
+    color: white;
+    font-family: Georgia, serif;
+    margin-bottom: 5px;
+}
+
+.footer-title {
+    color: #79e6ef;
+    margin-top: 12px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:850px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .leadership {
+        grid-template-columns: 1fr;
+    }
+
+    .about-grid,
+    .registration-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .speaker-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .speaker-photo {
+        margin: auto;
+    }
+
+    .venue-card {
+        flex-direction: column;
+    }
+}
+
+@media(max-width:600px) {
+
+    section {
+        padding: 55px 0;
+    }
+
+    .hero-inner {
+        padding-top: 50px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .speaker-card,
+    .reg-box,
+    .venue-card {
+        padding: 22px;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-<!-- ================= NAVIGATION ================= -->
 
-<nav>
-    <div class="nav-container">
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-        <div class="nav-brand">
-            CHEMISTRY SEMINAR
+<nav class="navbar">
+
+    <div class="nav-inner">
+
+        <div class="logo">
+            DEPARTMENT OF CHEMISTRY
         </div>
 
         <ul class="nav-links">
+
             <li><a href="#about">About</a></li>
+
             <li><a href="#speaker">Speaker</a></li>
+
             <li><a href="#schedule">Schedule</a></li>
-            <li><a href="#team">Organizing Team</a></li>
+
             <li><a href="#registration">Registration</a></li>
+
+            <li><a href="#team">Team</a></li>
+
         </ul>
 
     </div>
+
 </nav>
 
 
-<!-- ================= HERO ================= -->
+
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <header class="hero">
 
-    <div class="molecule m1"></div>
-    <div class="molecule m2"></div>
-
     <div class="hero-inner">
 
-        <div class="hero-content">
+        <div class="university">
+            MAGADH UNIVERSITY, BODH-GAYA
+        </div>
 
-            <div class="university">
-                MAGADH UNIVERSITY, BODH-GAYA
-            </div>
+        <div class="department">
+            Department of Chemistry
+        </div>
 
-            <div class="department">
-                Department of Chemistry
-            </div>
 
-            <h1>
-                Molecular Recognition and
-                <span>Non-Covalent Interactions</span>
-            </h1>
+        <!-- LEADERSHIP -->
 
-            <p class="subtitle">
-                <strong>From Molecules to Materials</strong><br>
-                Exploring the chemistry of molecular recognition,
-                intermolecular interactions, supramolecular assemblies
-                and their emerging applications.
-            </p>
+        <div class="leadership">
 
-            <div class="event-meta">
+            <div class="leader">
 
-                <div class="meta-box">
-                    <strong>10 October 2026</strong>
-                    <small>Saturday</small>
+                <div class="leader-label">
+                    Patron
                 </div>
 
-                <div class="meta-box">
-                    <strong>10:00 AM onwards</strong>
-                    <small>Seminar Programme</small>
-                </div>
+                <h3>
+                    Prof. Dilip Kumar Kesari
+                </h3>
 
-                <div class="meta-box">
-                    <strong>Chemistry Seminar Hall</strong>
-                    <small>Magadh University, Bodh-Gaya</small>
-                </div>
+                <p>
+                    Vice-Chancellor
+                </p>
 
             </div>
 
-            <div class="buttons">
-                <a href="#registration" class="btn btn-primary">
-                    Register for Seminar
-                </a>
 
-                <a href="#schedule" class="btn btn-outline">
-                    View Schedule
-                </a>
+            <div class="leader">
+
+                <div class="leader-label">
+                    Co-Patron
+                </div>
+
+                <h3>
+                    Dr. B. K. Manglam
+                </h3>
+
+                <p>
+                    Registrar
+                </p>
+
             </div>
+
+
+            <div class="leader">
+
+                <div class="leader-label">
+                    Chair Person
+                </div>
+
+                <h3>
+                    Dr. Atul Kumar Srivastava
+                </h3>
+
+                <p>
+                    Head, Department of Chemistry
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- TITLE -->
+
+        <h1>
+
+            Molecular Recognition and
+            <span>Non-Covalent Interactions</span>
+
+        </h1>
+
+
+        <p class="subtitle">
+
+            <strong>
+                From Molecules to Materials
+            </strong>
+
+            <br>
+
+            Exploring molecular recognition, intermolecular
+            interactions, supramolecular assemblies and their
+            emerging applications.
+
+        </p>
+
+
+        <!-- EVENT INFORMATION -->
+
+        <div class="event-info">
+
+            <div class="info-box">
+
+                <strong>
+                    10 October 2026
+                </strong>
+
+                <span>
+                    Saturday
+                </span>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <strong>
+                    10:00 AM onwards
+                </strong>
+
+                <span>
+                    Seminar Programme
+                </span>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <strong>
+                    Chemistry Seminar Hall
+                </strong>
+
+                <span>
+                    Magadh University, Bodh-Gaya
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="buttons">
+
+            <a
+                href="#registration"
+                class="btn btn-primary">
+
+                Register Now
+
+            </a>
+
+
+            <a
+                href="#schedule"
+                class="btn btn-outline">
+
+                Programme
+
+            </a>
 
         </div>
 
@@ -780,7 +948,10 @@
 </header>
 
 
-<!-- ================= ABOUT ================= -->
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
 
 <section class="about" id="about">
 
@@ -788,55 +959,62 @@
 
         <div class="about-grid">
 
-            <div class="about-text">
+            <div>
 
-                <div class="section-label">
+                <div class="section-tag">
                     About the Seminar
                 </div>
 
                 <h2 class="section-title">
-                    Chemistry at the Interface of Molecules and Materials
+                    From Molecules to Materials
                 </h2>
 
                 <p>
-                    Molecular recognition and non-covalent interactions are
-                    fundamental to chemistry, governing how molecules
-                    associate, recognize one another and assemble into
-                    complex structures.
+                    Molecular recognition and non-covalent interactions
+                    are fundamental to modern chemistry, governing
+                    molecular association, recognition, self-assembly
+                    and the formation of complex structures.
                 </p>
 
                 <p>
-                    The seminar will explore the principles of hydrogen
-                    bonding, π–π interactions, electrostatic interactions,
-                    van der Waals forces, host–guest chemistry and
-                    metal–ligand interactions.
-                </p>
-
-                <p>
-                    The programme will also highlight their significance
-                    in supramolecular chemistry, functional materials,
-                    biomolecular systems, nanomaterials, sensing,
-                    catalysis and drug-delivery applications.
+                    The seminar brings together perspectives from
+                    physical, organic and inorganic chemistry to explore
+                    the role of molecular interactions in supramolecular
+                    systems, biomolecules, functional materials,
+                    nanomaterials and therapeutic applications.
                 </p>
 
             </div>
 
 
-            <div class="highlight-card">
+            <div class="theme-card">
 
-                <h3>Key Areas</h3>
+                <h3>
+                    Key Themes
+                </h3>
 
-                <ul>
+                <ul class="theme-list">
+
+                    <li>Hydrogen & Halogen Bonding</li>
+
+                    <li>π–π & van der Waals Interactions</li>
+
                     <li>Molecular Recognition</li>
-                    <li>Hydrogen Bonding</li>
-                    <li>π–π Interactions</li>
+
                     <li>Host–Guest Chemistry</li>
+
                     <li>Supramolecular Chemistry</li>
+
                     <li>Self-Assembly</li>
+
                     <li>Metal–Ligand Interactions</li>
+
                     <li>Functional Materials</li>
+
                     <li>Biomolecular Interactions</li>
+
                     <li>Drug Delivery</li>
+
                 </ul>
 
             </div>
@@ -848,13 +1026,16 @@
 </section>
 
 
-<!-- ================= INVITED SPEAKER ================= -->
 
-<section class="speaker-section" id="speaker">
+<!-- =========================================================
+     INVITED SPEAKER
+========================================================= -->
+
+<section class="speaker" id="speaker">
 
     <div class="container">
 
-        <div class="section-label">
+        <div class="section-tag">
             Distinguished Lecture
         </div>
 
@@ -862,20 +1043,21 @@
             Invited Speaker
         </h2>
 
-        <p class="section-intro">
-            We are pleased to welcome an invited expert to share
-            insights into emerging developments in molecular
-            recognition and non-covalent interactions.
+        <p class="section-text">
+            An invited expert will share recent perspectives on
+            molecular recognition and non-covalent interactions.
         </p>
 
 
         <div class="speaker-card">
 
-            <!-- Replace this placeholder with speaker photograph -->
-
             <div class="speaker-photo">
-                SPEAKER<br>PHOTO
+
+                SPEAKER<br>
+                PHOTO
+
             </div>
+
 
             <div>
 
@@ -884,16 +1066,18 @@
                 </h3>
 
                 <div class="speaker-role">
-                    [Designation] · [Department / Institution]
+                    [Designation], [Institution]
                 </div>
 
                 <p>
-                    <strong>Lecture Title:</strong><br>
-                    “[Title of Invited Lecture]”
+                    <strong>
+                        Lecture:
+                    </strong>
+
+                    [Title of Invited Lecture]
                 </p>
 
-                <p style="margin-top:12px;">
-                    <strong>Research Areas:</strong>
+                <p style="margin-top:8px;">
                     Molecular Recognition · Supramolecular Chemistry ·
                     Non-Covalent Interactions · Functional Materials
                 </p>
@@ -907,13 +1091,16 @@
 </section>
 
 
-<!-- ================= SCHEDULE ================= -->
 
-<section class="schedule-section" id="schedule">
+<!-- =========================================================
+     SCHEDULE
+========================================================= -->
+
+<section class="schedule" id="schedule">
 
     <div class="container">
 
-        <div class="section-label">
+        <div class="section-tag">
             Programme
         </div>
 
@@ -921,26 +1108,31 @@
             Seminar Schedule
         </h2>
 
-        <p class="section-intro">
-            The detailed programme can be updated with the final
-            session timings and lecture titles.
+        <p class="section-text">
+            Programme timings can be updated according to the
+            finalized event schedule.
         </p>
 
 
-        <div class="schedule">
+        <div class="timeline">
+
 
             <div class="schedule-item">
 
-                <div class="time">
+                <div class="schedule-time">
                     10:00 – 10:15 AM
                 </div>
 
                 <div>
-                    <h3>Registration & Welcome</h3>
+
+                    <h3>
+                        Registration & Welcome
+                    </h3>
+
                     <p>
-                        Registration of participants and welcome of
-                        invited guests.
+                        Registration and reception of participants.
                     </p>
+
                 </div>
 
             </div>
@@ -948,15 +1140,20 @@
 
             <div class="schedule-item">
 
-                <div class="time">
+                <div class="schedule-time">
                     10:15 – 10:25 AM
                 </div>
 
                 <div>
-                    <h3>Welcome Address</h3>
+
+                    <h3>
+                        Welcome Address
+                    </h3>
+
                     <p>
-                        Address by the Department of Chemistry.
+                        Welcome by the Department of Chemistry.
                     </p>
+
                 </div>
 
             </div>
@@ -964,16 +1161,20 @@
 
             <div class="schedule-item">
 
-                <div class="time">
+                <div class="schedule-time">
                     10:25 – 10:35 AM
                 </div>
 
                 <div>
-                    <h3>Opening Remarks</h3>
+
+                    <h3>
+                        Opening Remarks
+                    </h3>
+
                     <p>
-                        Introduction to the theme and objectives
-                        of the seminar.
+                        Introduction to the seminar theme.
                     </p>
+
                 </div>
 
             </div>
@@ -981,21 +1182,21 @@
 
             <div class="schedule-item">
 
-                <div class="time">
+                <div class="schedule-time">
                     10:35 – 11:30 AM
                 </div>
 
                 <div>
-                    <h3>Invited Lecture</h3>
+
+                    <h3>
+                        Invited Lecture
+                    </h3>
+
                     <p>
-                        <strong>
-                            Molecular Recognition and Non-Covalent
-                            Interactions
-                        </strong>
+                        Molecular Recognition and Non-Covalent
+                        Interactions
                     </p>
-                    <p>
-                        Invited Speaker: [Name]
-                    </p>
+
                 </div>
 
             </div>
@@ -1003,16 +1204,20 @@
 
             <div class="schedule-item">
 
-                <div class="time">
-                    16:00 – 17:00 PM
+                <div class="schedule-time">
+                    11:30 – 11:45 AM
                 </div>
 
                 <div>
-                    <h3>Interaction & Discussion</h3>
+
+                    <h3>
+                        Interaction & Discussion
+                    </h3>
+
                     <p>
-                        Questions, discussion and interaction with
-                        participants.
+                        Questions and interaction with participants.
                     </p>
+
                 </div>
 
             </div>
@@ -1020,18 +1225,24 @@
 
             <div class="schedule-item">
 
-                <div class="time">
-                    17:30 PM
+                <div class="schedule-time">
+                    11:45 AM onwards
                 </div>
 
                 <div>
-                    <h3>Vote of Thanks & Closing</h3>
+
+                    <h3>
+                        Vote of Thanks & Closing
+                    </h3>
+
                     <p>
                         Concluding remarks and acknowledgements.
                     </p>
+
                 </div>
 
             </div>
+
 
         </div>
 
@@ -1040,17 +1251,21 @@
 </section>
 
 
-<!-- ================= REGISTRATION ================= -->
 
-<section class="registration-section" id="registration">
+<!-- =========================================================
+     REGISTRATION
+========================================================= -->
+
+<section class="registration" id="registration">
 
     <div class="container">
 
         <div class="registration-grid">
 
-            <div class="registration-info">
 
-                <div class="section-label">
+            <div>
+
+                <div class="section-tag">
                     Participation
                 </div>
 
@@ -1058,153 +1273,136 @@
                     Register for the Seminar
                 </h2>
 
-                <p class="section-intro">
+                <p class="section-text">
                     Faculty members, research scholars and students
-                    are invited to participate in the seminar.
-                </p>
-
-                <h3>
-                    Registration is open
-                </h3>
-
-                <p>
-                    Please complete the registration form with your
-                    basic details. The information may be used for
-                    attendance and certificate generation.
+                    are warmly invited to participate in the seminar.
                 </p>
 
                 <p>
-                    <strong>Registration Fee:</strong>
-                    [Free / ₹____]
-                </p>
-
-                <p>
-                    <strong>Registration Deadline:</strong>
-                    [Date]
+                    <strong>
+                        Registration Fee:
+                    </strong>
+                    Free
                 </p>
 
             </div>
 
 
-            <form class="registration-form"
-                  onsubmit="registerParticipant(event)">
+            <div class="reg-box">
 
                 <h3>
                     Participant Registration
                 </h3>
 
-                <div class="form-group">
-                    <label for="name">
-                        Full Name *
-                    </label>
 
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Enter your full name"
-                        required>
-                </div>
+                <form
+                    onsubmit="registerUser(event)">
 
 
-                <div class="form-group">
-                    <label for="email">
-                        Email Address *
-                    </label>
+                    <div class="form-group">
 
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="name@example.com"
-                        required>
-                </div>
+                        <label>
+                            Full Name *
+                        </label>
 
+                        <input
+                            type="text"
+                            placeholder="Enter your name"
+                            required>
 
-                <div class="form-group">
-                    <label for="phone">
-                        Mobile Number
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        placeholder="+91 XXXXX XXXXX">
-                </div>
+                    </div>
 
 
-                <div class="form-group">
-                    <label for="designation">
-                        Designation / Course *
-                    </label>
+                    <div class="form-group">
 
-                    <input
-                        type="text"
-                        id="designation"
-                        name="designation"
-                        placeholder="e.g. Assistant Professor / PhD Scholar"
-                        required>
-                </div>
+                        <label>
+                            Email *
+                        </label>
 
+                        <input
+                            type="email"
+                            placeholder="name@example.com"
+                            required>
 
-                <div class="form-group">
-                    <label for="institution">
-                        Institution *
-                    </label>
-
-                    <input
-                        type="text"
-                        id="institution"
-                        name="institution"
-                        placeholder="College / University / Institution"
-                        required>
-                </div>
+                    </div>
 
 
-                <div class="form-group">
-                    <label for="category">
-                        Participant Category
-                    </label>
+                    <div class="form-group">
 
-                    <select id="category" name="category">
+                        <label>
+                            Mobile Number
+                        </label>
 
-                        <option value="">
-                            Select category
-                        </option>
+                        <input
+                            type="tel"
+                            placeholder="+91 XXXXX XXXXX">
 
-                        <option>
-                            Faculty Member
-                        </option>
-
-                        <option>
-                            Research Scholar
-                        </option>
-
-                        <option>
-                            Postgraduate Student
-                        </option>
-
-                        <option>
-                            Undergraduate Student
-                        </option>
-
-                        <option>
-                            Other
-                        </option>
-
-                    </select>
-
-                </div>
+                    </div>
 
 
-                <button
-                    type="submit"
-                    class="btn btn-primary submit-btn">
-                    Submit Registration
-                </button>
+                    <div class="form-group">
 
-            </form>
+                        <label>
+                            Institution *
+                        </label>
+
+                        <input
+                            type="text"
+                            placeholder="College / University"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Participant Category
+                        </label>
+
+                        <select>
+
+                            <option>
+                                Select Category
+                            </option>
+
+                            <option>
+                                Faculty Member
+                            </option>
+
+                            <option>
+                                Research Scholar
+                            </option>
+
+                            <option>
+                                Postgraduate Student
+                            </option>
+
+                            <option>
+                                Undergraduate Student
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-primary submit"
+                        type="submit">
+
+                        Submit Registration
+
+                    </button>
+
+
+                </form>
+
+            </div>
 
         </div>
 
@@ -1213,13 +1411,16 @@
 </section>
 
 
-<!-- ================= ORGANIZING TEAM ================= -->
 
-<section class="team-section" id="team">
+<!-- =========================================================
+     ORGANIZING TEAM
+========================================================= -->
+
+<section class="team" id="team">
 
     <div class="container">
 
-        <div class="section-label">
+        <div class="section-tag">
             Organization
         </div>
 
@@ -1227,12 +1428,9 @@
             Organizing Team
         </h2>
 
-        <p class="section-intro">
-            Department of Chemistry, Magadh University, Bodh-Gaya.
-        </p>
-
 
         <div class="team-grid">
+
 
             <div class="team-card">
 
@@ -1337,6 +1535,7 @@
 
             </div>
 
+
         </div>
 
     </div>
@@ -1344,14 +1543,17 @@
 </section>
 
 
-<!-- ================= VENUE ================= -->
 
-<section class="venue-section">
+<!-- =========================================================
+     VENUE
+========================================================= -->
+
+<section class="venue">
 
     <div class="container">
 
-        <div class="section-label">
-            Event Information
+        <div class="section-tag">
+            Venue
         </div>
 
         <h2 class="section-title">
@@ -1360,6 +1562,7 @@
 
 
         <div class="venue-card">
+
 
             <div>
 
@@ -1379,7 +1582,9 @@
                     href="https://maps.google.com/?q=Magadh+University+Bodh+Gaya"
                     target="_blank"
                     class="btn btn-primary">
+
                     View Location
+
                 </a>
 
             </div>
@@ -1388,24 +1593,43 @@
             <div class="venue-details">
 
                 <div class="venue-detail">
-                    <strong>Date</strong>
-                    <span>10 October 2026</span>
+
+                    <strong>
+                        Date
+                    </strong>
+
+                    <span>
+                        10 October 2026
+                    </span>
+
                 </div>
 
-                <div class="venue-detail">
-                    <strong>Time</strong>
-                    <span>10:00 AM onwards</span>
-                </div>
 
                 <div class="venue-detail">
-                    <strong>Venue</strong>
-                    <span>Chemistry Seminar Hall</span>
+
+                    <strong>
+                        Time
+                    </strong>
+
+                    <span>
+                        10:00 AM onwards
+                    </span>
+
                 </div>
 
+
                 <div class="venue-detail">
-                    <strong>Organized by</strong>
-                    <span>Department of Chemistry, Magadh University</span>
+
+                    <strong>
+                        Venue
+                    </strong>
+
+                    <span>
+                        Chemistry Seminar Hall
+                    </span>
+
                 </div>
+
 
             </div>
 
@@ -1416,7 +1640,10 @@
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
@@ -1428,54 +1655,41 @@
         Magadh University, Bodh-Gaya
     </p>
 
-    <p class="footer-title">
+    <div class="footer-title">
         Molecular Recognition and Non-Covalent Interactions:
         From Molecules to Materials
-    </p>
+    </div>
 
-    <p style="margin-top:15px;">
+    <p style="margin-top:10px;">
         10 October 2026 · 10:00 AM onwards
     </p>
 
-    <p style="margin-top:20px; font-size:12px;">
+    <p style="margin-top:18px;font-size:11px;">
         © 2026 Department of Chemistry, Magadh University
     </p>
 
 </footer>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
 
 <script>
 
-function registerParticipant(event) {
+function registerUser(event) {
 
     event.preventDefault();
 
-    const name =
-        document.getElementById("name").value;
-
     alert(
-        "Thank you, " + name +
-        "! Your registration details have been submitted."
+        "Thank you for registering for the seminar!"
     );
 
-    /*
-        IMPORTANT:
-        This demo form does not store data.
-
-        To actually collect registrations,
-        connect this form to:
-
-        1. Google Forms
-        2. Google Sheets + Apps Script
-        3. PHP/MySQL
-        4. Node.js backend
-        5. Your university registration system
-    */
 }
 
 </script>
+
 
 </body>
 </html>
