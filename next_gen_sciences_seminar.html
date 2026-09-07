@@ -1046,7 +1046,7 @@ section{padding:28px 0}
         </div>
 
         <div class="person">
-          <small>Organizing Secretary & treasurer</small>
+          <small>Organizing Secretary</small>
           <strong>Dr. Bikash Mandal</strong>
           Assistant Professor
         </div>
@@ -1160,6 +1160,20 @@ section{padding:28px 0}
                     <textarea id="abstractTitle" rows="3"
                               placeholder="Enter the title of your abstract"
                               required></textarea>
+                </div>
+
+                <!-- MODE OF PRESENTATION -->
+                <div class="input-group">
+                    <label for="presentationMode">
+                        Mode of Presentation <sup>*</sup>
+                    </label>
+                    <select id="presentationMode" required>
+                        <option value="" disabled selected>
+                            Select mode of presentation
+                        </option>
+                        <option value="Oral">Oral</option>
+                        <option value="Poster">Poster</option>
+                    </select>
                 </div>
 
                 <!-- PAYMENT AMOUNT -->
@@ -1325,6 +1339,9 @@ document.getElementById("registrationForm")
     const abstractTitle =
         document.getElementById("abstractTitle").value.trim();
 
+    const presentationMode =
+        document.getElementById("presentationMode").value;
+
     const paymentAmount =
         document.getElementById("paymentAmount").value.trim();
 
@@ -1335,7 +1352,7 @@ document.getElementById("registrationForm")
         document.getElementById("transactionNumber").value.trim();
 
     if(!name || !designation || !affiliation || !email || !mobile ||
-       !abstractTitle || !paymentAmount ||
+       !abstractTitle || !presentationMode || !paymentAmount ||
        !utrNumber || !transactionNumber){
 
         message.style.color = "#d11b45";
@@ -1384,6 +1401,7 @@ document.getElementById("registrationForm")
                         "Email":email,
                         "Mobile Number":mobile,
                         "Title of your abstract":abstractTitle,
+                        "Mode of Presentation":presentationMode,
                         "Payment Amount":paymentAmount,
                         "UTR Number":utrNumber,
                         "Transaction Number":transactionNumber
