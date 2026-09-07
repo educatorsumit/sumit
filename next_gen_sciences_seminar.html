@@ -12,13 +12,23 @@ section{padding:40px 0}.white{background:#fff}.grid3{display:grid;grid-template-
 h2{color:#092b62;margin-top:0}.photo{width:100%;height:100%;min-height:290px;object-fit:cover;border-radius:16px}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{background:#eaf2fb;color:#0a4f8e;padding:6px 10px;border-radius:20px;font-weight:700;font-size:13px}
 .training{border-left:6px solid #08734f;background:linear-gradient(135deg,#eafff6,#fff)}.highlight{border-left:6px solid #d99a24}
 table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px;border-bottom:1px solid #dfe6ef}th{background:#f0f5fa}
-.committee{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.person{text-align:center;background:#fff;border-top:4px solid #8e1740;border-radius:12px;padding:14px;font-size:14px}.person strong{display:block;color:#092b62}
+.committee{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.person{text-align:center;background:#fff;border-top:4px solid #8e1740;border-radius:12px;padding:12px 8px;font-size:13px;line-height:1.25}
+.person strong{display:block;color:#092b62;font-size:14px;margin:3px 0}
+.committee-lead{display:contents}
+.committee-label{grid-column:1/-1;justify-self:center;background:#176fb5;color:#fff;border-radius:18px;padding:5px 30px;font-size:12px;font-weight:900;letter-spacing:.4px;margin:2px 0 0}
+.committee-members{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.committee-members .person{border-top:0;border-bottom:3px solid #176fb5}
 .reg{background:#092b62;color:#fff}.reg h2{color:#fff}.reggrid{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
 footer{background:#061d43;color:#dce8f7;text-align:center;padding:25px}
 
 .keynotes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.speaker{background:linear-gradient(135deg,#fff,#f3f7ff);border:1px solid #dce6f2;border-radius:16px;padding:22px;position:relative;overflow:hidden}.speaker:before{content:"KEYNOTE SPEAKER";display:inline-block;background:#8e1740;color:#fff;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:800;letter-spacing:1px}.speaker h3{color:#092b62;margin:12px 0 4px;font-size:1.35rem}.speaker p{margin:4px 0;color:#52647c}.resources{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.resource{display:block;text-decoration:none;background:#fff;border:2px solid #dce6f2;border-radius:13px;padding:16px;text-align:center;font-weight:800;color:#092b62;transition:.2s}.resource:hover{transform:translateY(-2px);box-shadow:0 7px 18px #173a6120}.resource span{display:block;color:#8e1740;font-size:12px;margin-top:5px}
-@media(max-width:850px){.grid3,.about,.reggrid,.keynotes,.resources{grid-template-columns:1fr}.committee{grid-template-columns:repeat(2,1fr)}.meta{grid-template-columns:1fr}}
-@media(max-width:520px){.committee{grid-template-columns:1fr}.logo{width:85px;height:62px}}
+@media(max-width:850px){
+  .committee-members{grid-template-columns:repeat(2,1fr)}
+.grid3,.about,.reggrid,.keynotes,.resources{grid-template-columns:1fr}.committee{grid-template-columns:repeat(2,1fr)}.meta{grid-template-columns:1fr}}
+@media(max-width:520px){
+  .committee-members{grid-template-columns:1fr}
+.committee{grid-template-columns:1fr}.logo{width:85px;height:62px}}
 
 .registration-section{padding:55px 20px}
 .registration-wrap{max-width:950px;margin:auto}
@@ -1006,18 +1016,61 @@ section{padding:28px 0}
 <section class="soft">
   <div class="wrap">
     <article class="card">
-      <h2>Organizing Committee</h2>
+      <h2></h2>
+
       <div class="committee">
-        <div class="person"><small>Patron</small><strong>Prof. Dilip Kumar Kesari</strong>Hon’ble Vice-Chancellor</div>
-        <div class="person"><small>Co-Patron</small><strong>Prof. SNP Yadav ‘Deen’</strong>Dean, Faculty of Science</div>
-        <div class="person"><small>Co-Patron</small><strong>Dr. B. K. Mangalam</strong>Registrar</div>
-        <div class="person"><small>Chairperson</small><strong>Dr. Atul Kumar Srivastava</strong>Head, P. G. Department of Chemistry</div>
-        <div class="person"><small>Convenor</small><strong>Dr. Sumit Kumar</strong>Assistant Professor (Sr. Scale)</div>
-        <div class="person"><small>Organizing Secretary & Treasurer</small><strong>Dr. Bikash Mandal</strong>Assistant Professor</div>
-        <div class="person"><small>Committee Member</small><strong>Dr. Partha Pratim Das</strong>Assistant Professor (Sr. Scale)</div>
-        <div class="person"><small>Committee Member</small><strong>Dr. Supriya Kumari</strong>Assistant Professor (Sr. Scale)</div>
-        <div class="person"><small>Committee Member</small><strong>Dr. Shipra Solanki</strong>Assistant Professor</div>
-        <div class="person"><small>Committee Member</small><strong>Dr. Rupesh Kumar Jha</strong>Assistant Professor</div>
+        <div class="person">
+          <small>Patron</small>
+          <strong>Prof. Dilip Kumar Kesari</strong>
+          Hon’ble Vice-Chancellor<br>Magadh University
+        </div>
+
+        <div class="person">
+          <small>Co-Patrons</small>
+          <strong>Prof. SNP Yadav ‘Deen’</strong>
+          Dean, Faculty of Science<br>Magadh University
+          <strong>Dr. B. K. Mangalam</strong>
+          Registrar<br>Magadh University
+        </div>
+
+        <div class="person">
+          <small>Chairperson</small>
+          <strong>Dr. Atul Kumar Srivastava</strong>
+          Head, P. G. Department of Chemistry<br>Magadh University
+        </div>
+
+        <div class="person">
+          <small>Convenor</small>
+          <strong>Dr. Sumit Kumar</strong>
+          Assistant Professor<br>(Sr. Scale)
+        </div>
+
+        <div class="person">
+          <small>Organizing Secretary</small>
+          <strong>Dr. Bikash Mandal</strong>
+          Assistant Professor
+        </div>
+
+        <div class="committee-label">ORGANIZING COMMITTEE MEMBERS</div>
+
+        <div class="committee-members">
+          <div class="person">
+            <strong>Dr. Partha Pratim Das</strong>
+            Assistant Professor (Sr. Scale)
+          </div>
+          <div class="person">
+            <strong>Dr. Supriya Kumari</strong>
+            Assistant Professor (Sr. Scale)
+          </div>
+          <div class="person">
+            <strong>Dr. Shipra Solanki</strong>
+            Assistant Professor
+          </div>
+          <div class="person">
+            <strong>Dr. Rupesh Kumar Jha</strong>
+            Assistant Professor
+          </div>
+        </div>
       </div>
     </article>
   </div>
