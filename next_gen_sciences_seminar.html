@@ -1167,11 +1167,10 @@ section{padding:28px 0}
                 <!-- ABSTRACT TITLE -->
                 <div class="input-group full">
                     <label for="abstractTitle">
-                        Title of Your Abstract <sup>*</sup>
+                        Title of Your Abstract
                     </label>
                     <textarea id="abstractTitle" rows="3"
-                              placeholder="Enter abstract title or write &quot; To be submitted later &quot; if not ready."
-                              required></textarea>
+                              placeholder="Enter the title of your abstract"></textarea>
                 </div>
 
                 <!-- MODE OF PRESENTATION -->
@@ -1379,7 +1378,7 @@ document.getElementById("registrationForm")
         document.getElementById("transactionNumber").value.trim();
 
     if(!name || !designation || !affiliation || !email || !mobile ||
-       !abstractTitle || !presentationMode || !attendanceMode || !paymentAmount ||
+       !presentationMode || !attendanceMode || !paymentAmount ||
        !utrNumber || !transactionNumber){
 
         message.style.color = "#d11b45";
