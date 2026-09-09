@@ -19,6 +19,10 @@ table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px;bor
 .committee-label{grid-column:1/-1;justify-self:center;background:#176fb5;color:#fff;border-radius:18px;padding:5px 30px;font-size:12px;font-weight:900;letter-spacing:.4px;margin:2px 0 0}
 .committee-members{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .committee-members .person{border-top:0;border-bottom:3px solid #176fb5}
+.committee-role-group{grid-column:1/-1;justify-self:center;background:#176fb5;color:#fff;border-radius:18px;padding:6px 22px;font-size:12px;font-weight:900;letter-spacing:.4px;margin:6px 0 0;text-align:center}
+.committee-lead-row{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:850px){.committee-lead-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.committee-lead-row{grid-template-columns:1fr}}
 .reg{background:#092b62;color:#fff}.reg h2{color:#fff}.reggrid{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
 footer{background:#061d43;color:#dce8f7;text-align:center;padding:25px}
 
@@ -1014,42 +1018,54 @@ section{padding:28px 0}
 </section>
 
 <section class="soft">
-  <div class="wrap">
-    <article class="card">
+  <div class="wrap" >
+    <article class="card"  style="width:100%;max-width:none;margin:0;">
       <h2></h2>
 
-      <div class="committee">
+       <div class="committee-lead-row">
         <div class="person">
           <small>Patron</small>
           <strong>Prof. Dilip Kumar Kesari</strong>
           Hon’ble Vice-Chancellor<br>Magadh University
         </div>
-
+        <div class="person">
+          <small>Co-Patrons</small>
+          <strong>Dr. B. K. Mangalam</strong>
+          Registrar<br>Magadh University
+        </div>
         <div class="person">
           <small>Co-Patrons</small>
           <strong>Prof. SNP Yadav ‘Deen’</strong>
           Dean, Faculty of Science<br>Magadh University
-          <strong>Dr. B. K. Mangalam</strong>
-          Registrar<br>Magadh University
         </div>
+		</div>
 
+       <div class="committee-lead-row">
         <div class="person">
           <small>Chairperson</small>
           <strong>Dr. Atul Kumar Srivastava</strong>
           Head, P. G. Department of Chemistry<br>Magadh University
         </div>
-
+		
         <div class="person">
           <small>Convenor</small>
           <strong>Dr. Sumit Kumar</strong>
           Assistant Professor<br>(Sr. Scale)
         </div>
-
+        
+		<div class="person">
+          <small>Co-Convenor</small>
+          <strong>Dr. Partha Pratim Das</strong>
+          Assistant Professor<br>(Sr. Scale)
+        </div>
+               
         <div class="person">
           <small>Organizing Secretary & Treasurer</small>
           <strong>Dr. Bikash Mandal</strong>
           Assistant Professor
         </div>
+        </div>
+
 
         <div class="committee-label">ORGANIZING COMMITTEE MEMBERS</div>
 
@@ -1173,6 +1189,18 @@ section{padding:28px 0}
                         </option>
                         <option value="Oral">Oral</option>
                         <option value="Poster">Poster</option>
+                    </select>
+                </div>
+
+                <!-- MODE OF ATTENDANCE -->
+                <div class="input-group">
+                    <label for="attendanceMode">
+                        Mode of Attendance <sup>*</sup>
+                    </label>
+                    <select id="attendanceMode" required>
+                        <option value="" disabled selected>Select mode of attendance</option>
+                        <option value="Online">Online</option>
+                        <option value="In-Person">In-Person</option>
                     </select>
                 </div>
 
@@ -1342,6 +1370,9 @@ document.getElementById("registrationForm")
     const presentationMode =
         document.getElementById("presentationMode").value;
 
+    const attendanceMode =
+        document.getElementById("attendanceMode").value;
+
     const paymentAmount =
         document.getElementById("paymentAmount").value.trim();
 
@@ -1352,7 +1383,7 @@ document.getElementById("registrationForm")
         document.getElementById("transactionNumber").value.trim();
 
     if(!name || !designation || !affiliation || !email || !mobile ||
-       !abstractTitle || !presentationMode || !paymentAmount ||
+       !abstractTitle || !presentationMode || !attendanceMode || !paymentAmount ||
        !utrNumber || !transactionNumber){
 
         message.style.color = "#d11b45";
@@ -1402,6 +1433,7 @@ document.getElementById("registrationForm")
                         "Mobile Number":mobile,
                         "Title of your abstract":abstractTitle,
                         "Mode of Presentation":presentationMode,
+                        "Mode of Attendance":attendanceMode,
                         "Payment Amount":paymentAmount,
                         "UTR Number":utrNumber,
                         "Transaction Number":transactionNumber
