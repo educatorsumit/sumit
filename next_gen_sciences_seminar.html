@@ -1444,7 +1444,8 @@ document.getElementById("registrationForm")
                         "Mode of Attendance":attendanceMode,
                         "Payment Amount":paymentAmount,
                         "UTR Number":utrNumber,
-                        "Transaction Number":transactionNumber
+                        "Transaction Number":transactionNumber,
+                        "DataEntryTime":new Date().toLocaleString("en-IN",{timeZone:"Asia/Kolkata",hour12:false})
                     }]
                 })
             }
