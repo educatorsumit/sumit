@@ -885,7 +885,37 @@ section{padding:28px 0}
   .compact-registration-card .fee-box{grid-template-columns:1fr}
   .compact-registration-card .bank-details{grid-template-columns:1fr}
 }
-.resource-speaker:before{content:"RESOURCE PERSON";}</style></head><body>
+.resource-speaker:before{content:"RESOURCE PERSON";}
+/* UTR SUBMISSION ENQUIRY */
+.utr-enquiry{background:#eef5ff}
+.utr-enquiry-card{max-width:950px;margin:auto}
+.utr-enquiry-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:18px}
+.utr-enquiry-heading h2{margin:0;color:#092b62}
+.utr-enquiry-heading p{margin:4px 0 0;color:#68758a;font-size:13px}
+.utr-search-box{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end}
+.utr-search-box label{display:block;color:#092b62;font-size:13px;font-weight:800;margin-bottom:6px}
+.utr-search-box input{width:100%;border:1.5px solid #d5deea;border-radius:10px;padding:12px 14px;font-family:inherit;font-size:14px;background:#fbfdff;outline:none}
+.utr-search-box input:focus{border-color:#176fb5;background:#fff;box-shadow:0 0 0 4px #176fb515}
+.utr-search-btn{border:0;border-radius:10px;padding:12px 20px;background:linear-gradient(135deg,#092b62,#176fb5);color:#fff;font-weight:900;font-size:14px;cursor:pointer;min-height:44px}
+.utr-search-btn:disabled{opacity:.6;cursor:not-allowed}
+.utr-result{display:none;margin-top:16px;padding:16px;border-radius:12px;border:1px solid #dce6f2;background:#fff}
+.utr-result.show{display:block}
+.utr-result.success{border-left:5px solid #08734f}
+.utr-result.error{border-left:5px solid #d11b45;background:#fff8fa}
+.utr-result-title{font-weight:900;color:#092b62;margin-bottom:8px}
+.utr-result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.utr-result-grid div{padding:9px 11px;background:#f5f9ff;border-radius:8px}
+.utr-result-grid span{display:block;color:#68758a;font-size:10px;text-transform:uppercase;margin-bottom:2px}
+.utr-result-grid strong{font-size:13px;color:#14233d;word-break:break-word}
+.utr-note{margin-top:10px;color:#68758a;font-size:11px}
+@media(max-width:700px){
+  .utr-search-box{grid-template-columns:1fr}
+  .utr-result-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .utr-result-grid{grid-template-columns:1fr}
+}
+</style></head><body>
 <header class="hero">
   <div class="wrap">
     <div class="top">
@@ -1097,6 +1127,29 @@ section{padding:28px 0}
           </div>
         </div>
       </div>
+    </article>
+  </div>
+</section>
+
+
+<section class="utr-enquiry">
+  <div class="wrap">
+    <article class="card utr-enquiry-card">
+      <div class="utr-enquiry-heading">
+        <div>
+          <h2>Check Submission Status</h2>
+          <p>Enter your UTR Number to verify whether your seminar registration has been submitted.</p>
+        </div>
+        <div class="reg-icon">✓</div>
+      </div>
+      <div class="utr-search-box">
+        <div>
+          <label for="utrEnquiryNumber">UTR Number</label>
+          <input type="text" id="utrEnquiryNumber" placeholder="Enter your UTR Number" autocomplete="off">
+        </div>
+        <button type="button" class="utr-search-btn" id="utrEnquiryBtn">Check Submission</button>
+      </div>
+      <div id="utrEnquiryResult" class="utr-result" aria-live="polite"></div>
     </article>
   </div>
 </section>
@@ -1480,6 +1533,85 @@ document.getElementById("registrationForm")
     }
 
 });
+
+
+// UTR SUBMISSION ENQUIRY
+const utrEnquiryBtn = document.getElementById("utrEnquiryBtn");
+const utrEnquiryNumber = document.getElementById("utrEnquiryNumber");
+const utrEnquiryResult = document.getElementById("utrEnquiryResult");
+
+if(utrEnquiryBtn){
+  utrEnquiryBtn.addEventListener("click", async function(){
+    const utr = utrEnquiryNumber.value.trim();
+
+    if(!utr){
+      utrEnquiryResult.className = "utr-result show error";
+      utrEnquiryResult.innerHTML = "<div class='utr-result-title'>Please enter your UTR Number.</div>";
+      return;
+    }
+
+    utrEnquiryBtn.disabled = true;
+    utrEnquiryBtn.textContent = "Checking...";
+    utrEnquiryResult.className = "utr-result show";
+    utrEnquiryResult.innerHTML = "Checking submission. Please wait...";
+
+    try{
+      const url = REGISTRATION_API_URL + "/search?UTR%20Number=" + encodeURIComponent(utr);
+      const response = await fetch(url);
+
+      if(!response.ok){
+        throw new Error("Unable to query SheetDB");
+      }
+
+      const records = await response.json();
+
+      if(!Array.isArray(records) || records.length === 0){
+        utrEnquiryResult.className = "utr-result show error";
+        utrEnquiryResult.innerHTML =
+          "<div class='utr-result-title'>No submission found</div>" +
+          "<div>We could not find a registration associated with this UTR Number. Please check the UTR and try again.</div>";
+        return;
+      }
+
+      const record = records[0];
+
+      const safe = value => String(value ?? "").replace(/[&<>"']/g, ch => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      }[ch]));
+
+      utrEnquiryResult.className = "utr-result show success";
+      utrEnquiryResult.innerHTML =
+        "<div class='utr-result-title'>✓ Submission found</div>" +
+        "<div class='utr-result-grid'>" +
+          "<div><span>Name</span><strong>" + safe(record["Name"]) + "</strong></div>" +
+          "<div><span>Designation</span><strong>" + safe(record["Designation"]) + "</strong></div>" +
+          "<div><span>Payment</span><strong>₹" + safe(record["Payment Amount"]) + "</strong></div>" +
+          "<div><span>Attendance</span><strong>" + safe(record["Mode of Attendance"]) + "</strong></div>" +
+          "<div><span>UTR Number</span><strong>" + safe(record["UTR Number"]) + "</strong></div>" +
+          "<div><span>Submitted</span><strong>" + safe(record["DataEntryTime"]) + "</strong></div>" +
+        "</div>" +
+        "<div class='utr-note'>Your registration record has been located in the seminar submission database.</div>";
+
+    }catch(error){
+      console.error(error);
+      utrEnquiryResult.className = "utr-result show error";
+      utrEnquiryResult.innerHTML =
+        "<div class='utr-result-title'>Unable to check submission</div>" +
+        "<div>Please try again after a few moments.</div>";
+    }finally{
+      utrEnquiryBtn.disabled = false;
+      utrEnquiryBtn.textContent = "Check Submission";
+    }
+  });
+
+  utrEnquiryNumber.addEventListener("keydown", function(e){
+    if(e.key === "Enter"){
+      e.preventDefault();
+      utrEnquiryBtn.click();
+    }
+  });
+}
+
 
 // QR CODE MODAL
 const qrModal = document.getElementById("qrModal");
